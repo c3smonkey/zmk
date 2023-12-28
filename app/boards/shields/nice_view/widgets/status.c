@@ -204,7 +204,7 @@ static void draw_mods(lv_obj_t *widget, lv_color_t cbuf[], struct status_state s
     lv_canvas_draw_rect(canvas, 0, 0, DISP_WIDTH, MODS_HEIGHT, &rect_black_dsc);
 
     // Mod Labels
-    char names[4][4] = {"CTL", "SFT", "ALT", "CMD"};
+    char names[4][4] = {"CTL", "SFT", "OPT", "CMD"};
 
     // Drawing Mod Boxes
     int mod_offsets[4][2] = {{2, 2}, {35, 2}, {2, 22}, {35, 22}};
