@@ -28,7 +28,7 @@ struct Animation{
     const int repetition;
     const void *images[];
 };
-
+LV_IMG_DECLARE(rubber_duck);
 LV_IMG_DECLARE(vim);
 LV_IMG_DECLARE(rocket_rush_000);
 LV_IMG_DECLARE(rocket_rush_001);
@@ -303,10 +303,18 @@ const struct Animation vim_no_anim = {
     }
 };
 
+const struct Animation rubber_duck_no_anim = {
+    .frameCount = 1,
+    .timeGap = INT_MAX,
+    .repetition = -1,
+    .images = {
+        &rubber_duck
+    }
+};
 
 int currentAnimIdx = 0;
 //const struct Animation *anims[] = {&countdown_anim, &rick_anim, &rocket_rush_anim};
-const struct Animation *anims[] = {&countdown_anim, &vim_no_anim};
+const struct Animation *anims[] = {&countdown_anim, &rubber_duck};
 
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
