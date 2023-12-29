@@ -97,6 +97,7 @@ static void draw_battery_status(lv_obj_t *widget, lv_color_t cbuf[], struct stat
     // Rotate canvas
     rotate_canvas(canvas, cbuf);
 }
+
 static void draw_wpm(lv_obj_t *widget, lv_color_t cbuf[], struct status_state state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, WPM_IDX);
     lv_draw_rect_dsc_t rect_black_dsc;
@@ -145,6 +146,8 @@ static void draw_wpm(lv_obj_t *widget, lv_color_t cbuf[], struct status_state st
     // Rotate canvas
     rotate_canvas(canvas, cbuf);
 }
+
+
 static void draw_bt_prof(lv_obj_t *widget, lv_color_t cbuf[], struct status_state state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, BT_PROF_IDX);
     lv_draw_rect_dsc_t rect_black_dsc;
@@ -188,6 +191,7 @@ static void draw_bt_prof(lv_obj_t *widget, lv_color_t cbuf[], struct status_stat
     rotate_canvas(canvas, cbuf);
 }
 
+
 static void draw_mods(lv_obj_t *widget, lv_color_t cbuf[], struct status_state state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, MODS_IDX);
 
@@ -229,7 +233,7 @@ static void draw_layer(lv_obj_t *widget, lv_color_t cbuf[], struct status_state 
     lv_draw_rect_dsc_t rect_black_dsc;
     init_rect_dsc(&rect_black_dsc, LVGL_BACKGROUND);
     lv_draw_label_dsc_t label_dsc;
-    init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_unscii_16, LV_TEXT_ALIGN_CENTER);
+    init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_unscii_8, LV_TEXT_ALIGN_CENTER);
 
     // Fill background
     lv_canvas_draw_rect(canvas, 0, 0, DISP_WIDTH, LAYER_HEIGHT, &rect_black_dsc);
@@ -285,7 +289,7 @@ static void battery_status_update_cb(struct battery_status_state state) {
 }
 
 static struct battery_status_state battery_status_get_state(const zmk_event_t *eh) {
-    return (struct battery_status_state) {
+    return (struct battery_status_state){
         .level = bt_bas_get_battery_level(),
 #if IS_ENABLED(CONFIG_USB_DEVICE_STACK)
         .usb_present = zmk_usb_is_powered(),
